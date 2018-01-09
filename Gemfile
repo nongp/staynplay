@@ -54,8 +54,6 @@ gem 'momentjs-rails', '~> 2.17.1'
 gem 'omise'
 
 gem 'chartkick', '~> 2.2.4'
- 
-gem 'omniauth-stripe-connect', '~> 2.10.0'
 
 group :production do
   gem 'pg'
