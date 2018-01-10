@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-3 text-center">
-    <%= image_tag avatar_url(@other), class: "img-circle avatar-medium" %>
+    <%= image_tag avatar_url(@other), class: "avatar-full" %>
     <strong><%= @other.fullname %></strong>
     <%= link_to "ดูโปรไฟล์", @other, class: "btn btn-default" %>
   </div>
@@ -14,9 +14,11 @@
         <div class="container text-center">
           <%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
               <div class="form-group">
-              <%= f.text_field :context, placeholder: "พิมพ์ข้อความ", class: "form-control" %>
+              <%= f.text_field :content, placeholder: "พิมพ์ข้อความ", class: "form-control" %>
               </div>
-              <div class="col-md-3 text-center">การรับส่งข้อมูลการติดต่อ เช่น เบอร์โทร, อีเมล์, Line ID, เว็บไซต์ หรือ URL อาจส่งผลให้บัญชีของคุณถูกระงับชั่วคราว
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <div class="row">การรับส่งข้อมูลการติดต่อ เช่น เบอร์โทร, อีเมล์, Line ID, เว็บไซต์ หรือ URL อาจส่งผลให้บัญชีของคุณถูกระงับชั่วคราว</div>
+              <div class="row">
               <%= f.submit "ส่งข้อความ", class: "btn btn-normal" %>
               <div>
               </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227105924) do
+ActiveRecord::Schema.define(version: 20180110162632) do
 
   create_table "calendars", force: :cascade do |t|
     t.date     "day"
@@ -147,7 +147,6 @@ ActiveRecord::Schema.define(version: 20171227105924) do
     t.string   "pin"
     t.boolean  "phone_verified"
     t.integer  "unread",                   default: 1
-    t.string   "Omise_ID"
     t.string   "merchant_id"
     t.string   "merchant_provider"
     t.string   "merchant_access_code"
