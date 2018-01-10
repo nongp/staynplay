@@ -1,26 +1,83 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Payment Method", payment_method_path, class: "sidebar-link" %></li>
-      <li class="sidebar-item"><%= link_to "Payout Method", payout_method_path, class: "sidebar-link active" %></li>
-      <li class="sidebar-item"><%= link_to "Notification Settings", notification_settings_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "ตั้งค่าการชำระเงิน", payment_method_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "ตั้งค่าการรับเงิน", payout_method_path, class: "sidebar-link active" %></li>
+      <li class="sidebar-item"><%= link_to "ตั้งค่าการแจ้งเตือน", notification_settings_path, class: "sidebar-link" %></li>
     </ul>
   </div>
-  <div class="col-md-9">
+ <div class="col-md-9">
     <div class="panel panel-default">
       <div class="panel-heading">การรับชำระเงิน</div>
       <div class="panel-body">
-        <div class="container text-center">
-          <% if current_user.customer_id.blank? %>
-              <%= link_to image_tag('stripe_button.png'), stripe_express_path %>
-          <% else %>
-              <br/>
-              <div class="text-center">
-                <%= link_to "Express Dashboard", @login_link.url, class: "btn btn-normal" %>
-              </div>
-          <% end %>
+        <div class="container">
+         <%= form_tag("/pay_out", method: "POST", id: "pay-out") do %>
+             
+                      <div class="form-group row">
+                        <label class="col-2 col-form-label">ธนาคาร</label>
+                          <div class="col-10">
+                            <select class="form-control" data-name="brand">
+                              <option value="test">Test Bank</option>
+                              <option value="bbl">Bangkok Bank</option>
+                              <option value="kbank">Kasikornbank</option>
+                              <option value="ktb">Krungthai Bank</option>
+                              <option value="tmb">TMB Bank</option>
+                              <option value="scb"> Siam Commercial Bank</option>
+                              <option value="citi">Citibank</option>
+                              <option value="cimb">CIMB Thai Bank</option>
+                              <option value="uob">United Overseas Bank (Thai)</option>
+                              <option value="bay">Bank of Ayudhya (Krungsri)</option>
+                              <option value="tbank">Thanachart Bank</option>
+                              <option value="ibank">Islamic Bank of Thailand</option>
+                              <option value="lhb">Land and Houses Bank</option>
+                            </select>
+                          </div>
+                        </div>
+                      <div class="form-group row">
+                        <label class="col-2 col-form-label">หมายเลขบัญชี</label>
+                          <div class="col-10">
+                            <input class="form-control" type="text" data-name="bank_account_number">
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-2 col-form-label">ชื่อบัญชี</label>
+                          <div class="col-10">
+                            <input class="form-control" type="text" data-name="bank_account_name">
+                          </div>
+                      </div>
+                        <div class="form-group row">
+                          <label class="col-2 col-form-label">ประเภทบัญชี</label>
+                            <div class="col-10">
+                              <select class="form-control" data-name="Type">
+                                <option value="individual">individual (บุคคลธรรมดา)</option>
+                                <option value="corporate">corporate (บริษัท)</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group row">
+                       <label class="col-2 col-form-label">Tax ID (option)</label>
+                        <div class="col-10">
+                          <input class="form-control" type="text" data-name="tax_id" size="8">
+                        </div>
+                      </div>
+                      <br/>
+                       <div><input type="hidden" name="omise_token"></div>
+                      <div>
+                      <input type="submit" id="create_token">
+                      </div>
+            <% end %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script src="https://cdn.omise.co/omise.js"></script>
+<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+
+<script>
+/*$(document).on("turbolinks:load", function() {*/
+// Set your Omise public key to authenticate against Omise API. This allows card information to be sent directly to Omise.
+Omise.setPublicKey('pkey_test_53x6wu9xs4h7zqkzq37');
+
+</script>

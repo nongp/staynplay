@@ -6,15 +6,15 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Payment Method", payment_method_path, class: "sidebar-link active" %></li>
-      <li class="sidebar-item"><%= link_to "Payout Method", payout_method_path, class: "sidebar-link" %></li>
-      <li class="sidebar-item"><%= link_to "Notification Settings", payment_method_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "ตั้งค่าการชำระเงิน", payment_method_path, class: "sidebar-link active" %></li>
+      <li class="sidebar-item"><%= link_to "ตั้งค่าการรับเงิน", payout_method_path, class: "sidebar-link" %></li>
+      <li class="sidebar-item"><%= link_to "คั้งค่าการแจ้งเตือน", notification_settings_path, class: "sidebar-link" %></li>
     </ul>
   </div>
 
   <div class="col-md-9">
     <div class="panel panel-default">
-      <div class="panel-heading">Payment Method</div>
+      <div class="panel-heading">ตั้งค่าการชำระเงิน</div>
       <div class="panel-body">
         <div class="container">
            <%= form_tag("/add_card", method: "POST", id: "add-card") do %>
@@ -24,20 +24,20 @@
                       <input type="hidden" name="omise_token">
 
                       <div>
-                        Name<br>
+                        ชื่อบนบัตร<br>
                         <input type="text" data-omise="holder_name">
                       </div>
                       <div>
-                        Number<br>
+                        หมายเลขบัตร<br>
                         <input type="text" data-omise="number">
                       </div>
                       <div>
-                        Date<br>
+                        วันหมดอายุ<br>
                         <input type="text" data-omise="expiration_month" size="4"> /
                         <input type="text" data-omise="expiration_year" size="8">
                       </div>
                       <div>
-                        Security Code<br>
+                        CVV<br>
                         <input type="text" data-omise="security_code" size="8">
                       </div>
                       <br/>

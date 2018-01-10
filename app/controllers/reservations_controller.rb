@@ -23,7 +23,7 @@ class ReservationsController < ApplicationController
       @reservation = current_user.reservations.build(reservation_params)
       @reservation.room = room
       @reservation.price = room.price
-      # @reservation.total = room.price * days
+      @reservation.total = room.price * days
       # @reservation.save
 
       @reservation.total = room.price * (days - special_dates.count)
@@ -70,13 +70,12 @@ class ReservationsController < ApplicationController
       @client.messages.create(
         from: '+17273996136',
         to: room.user.phone_number,
-        body: "#{reservation.user.fullname} booked your '#{room.listing_name}'"
+        body: "#{reservation.user.fullname} ได้ทำการจอง '#{room.listing_name}'"
       )
     end
 
     def charge(room, reservation)
       if !reservation.user.omise_id.blank?
-        begin
         customer = Omise::Customer.retrieve(reservation.user.omise_id)
         charge = Omise::Charge.create(
           :customer => customer.id,
@@ -85,7 +84,7 @@ class ReservationsController < ApplicationController
           :currency => "thb",
           :destination => {
              :amount => reservation.total * 90, # 80% of the total amount goes to the Host
-             :account => room.user.receipient_id # Host's Stripe customer ID
+             :account => room.user.merchant_id # Host's Stripe customer ID
           }
         )
 
@@ -96,13 +95,8 @@ class ReservationsController < ApplicationController
           flash[:notice] = "เรียบร้อย!! คุณสามารถดูรายละเอียดการจองของคุณได้ที่เมนู 'ทริปของฉัน'"
         else
           reservation.Declined!
-          flash[:alert] = "ขออภัยค่ะ เระบบไม่สามารถเรียกเก็บเงินจากบัตรของคุณ กรุณาอัพเดทข้อมูลบัตร Credit หรือบัตร Debit (ที่มีเครื่องหมาย visa หรือ master card) แล้วลองใหม่อีกครั้งค่ะ!"
+          flash[:alert] = "ขออภัยค่ะ ระบบไม่สามารถเรียกเก็บเงินจากบัตรของคุณ กรุณาอัพเดทข้อมูลบัตร Credit หรือบัตร Debit แล้วลองใหม่อีกครั้งค่ะ!"
         end
-      end
-    
-      #rescue  Exception => e
-        reservation.declined!
-        flash[:alert] = e.message
       end
     end
 

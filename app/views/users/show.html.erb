@@ -3,7 +3,7 @@
     <div class="center">
       <%= image_tag avatar_url(@user), class: "avatar-full" %>
       <% if current_user && current_user != @user %>
-        <%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %>
+        <%= link_to "ส่งข้อความ", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: :post, class: "btn btn-default" %>
       <% end %>
     </div>
     <br/>
@@ -32,7 +32,7 @@
       <%= @user.description %>
     </div>
 
-    <h4>ที่พักแนะนำ (<%= @rooms.length %>)</h4><br/>
+    <h4>ที่พัก (<%= @rooms.length %>)</h4><br/>
 
     <div class="row">
       <%= render partial: "rooms/rooms_list", locals: {rooms: @rooms} %>
