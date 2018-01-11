@@ -63,7 +63,7 @@ class UsersController < ApplicationController
     #  rescue TypeError, NameError => e
     #    flash[:alert] = e.message
     
-    #  end
+      end
 
 
   def add_card    
