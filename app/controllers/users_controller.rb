@@ -41,29 +41,29 @@ class UsersController < ApplicationController
   end
 
   def pay_out
-    if current_user.merchant_id.blank?
-        receipient = Omise::Recipient.create(
-          email: current_user.email,
-          type: "[data-name=Type]",
-          brand: "[data-name=brand]",
-          number: "[data-name=bank_account_number]",
-          name: "[data-name=bank_account_name]"
-          )
-        current_user.merchant_id = recipient_id
-        current_user.save
+   # if current_user.merchant_id.blank?
+   #     receipient = Omise::Recipient.create(
+   #       email: current_user.email,
+   #       type: "[data-name=Type]",
+   #       brand: "[data-name=brand]",
+   #       number: "[data-name=bank_account_number]",
+   #       name: "[data-name=bank_account_name]"
+   #       )
+   #     current_user.merchant_id = recipient_id
+   #     current_user.save
 
-    else
-      recipient = Omise::Recipient.retrieve(current_user.merchant_id)
-      recipient.id = current_user.merchant_id
-      recipient.save
-    end
+    #else
+    #  recipient = Omise::Recipient.retrieve(current_user.merchant_id)
+    #  recipient.id = current_user.merchant_id
+    #  recipient.save
+    #end
 
-        flash[:notice] = "ระบบได้ทำการบันทึกข้อมูลเรียบร้อยค่ะ"
-        redirect_to payout_method_path
-      rescue TypeError, NameError => e
-        flash[:alert] = e.message
+    #    flash[:notice] = "ระบบได้ทำการบันทึกข้อมูลเรียบร้อยค่ะ"
+    #    redirect_to payout_method_path
+    #  rescue TypeError, NameError => e
+    #    flash[:alert] = e.message
     
-      end
+    #  end
 
 
   def add_card    
