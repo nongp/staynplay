@@ -28,16 +28,16 @@ Rails.application.configure do
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.action_controller.asset_host = 'https://immense-beyond-70357.herokuapp.com/'
+  #config.action_controller.asset_host = 'https://immense-beyond-70357.herokuapp.com/'
 
   # Specifies the header that your server uses for sending files.
-  # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
-  # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+   config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
+   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Mount Action Cable outside main process or domain
    config.action_cable.mount_path = nil
-   config.action_cable.url = 'wss://immense-beyond-70357.herokuapp.com/cable'
-   config.action_cable.allowed_request_origins = [ 'immense-beyond-70357.herokuapp.com', /http:\/\/example.*/ ]
+   config.action_cable.url = 'ws://immense-beyond-70357.herokuapp.com/cable'
+   config.action_cable.allowed_request_origins = [ 'immense-beyond-70357.herokuapp.com', /http:\/\/staynplay.co*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
