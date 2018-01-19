@@ -37,10 +37,10 @@ Rails.application.configure do
   # Mount Action Cable outside main process or domain
    config.action_cable.mount_path = nil
    config.action_cable.url = 'ws://immense-beyond-70357.herokuapp.com/cable'
-   config.action_cable.allowed_request_origins = [ 'immense-beyond-70357.herokuapp.com', /http:\/\/staynplay.co*/ ]
+   config.action_cable.allowed_request_origins = [ 'https://immense-beyond-70357.herokuapp.com', /https:\/\/staynplay.co*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+   config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
