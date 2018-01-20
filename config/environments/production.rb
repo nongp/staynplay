@@ -25,7 +25,7 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
 
-  `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  #{}`config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   #config.action_controller.asset_host = 'https://immense-beyond-70357.herokuapp.com/'
@@ -53,8 +53,8 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
-  # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "AirPikachu_#{Rails.env}"
+   config.active_job.queue_adapter     = :resque
+   config.active_job.queue_name_prefix = "AirPikachu_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
