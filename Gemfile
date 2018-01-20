@@ -53,8 +53,6 @@ gem 'momentjs-rails', '~> 2.17.1'
 
 gem 'omise'
 
-gem 'redis'
-
 gem 'chartkick', '~> 2.2.4'
 
 group :production do
