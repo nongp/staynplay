@@ -100,7 +100,8 @@
             // Step 1: Create an array of selected dates
             while (start_date <= end_date) {
                 selectedDates.push($.datepicker.formatDate('d-m-yy', new Date(start_date)));
-                start_date.setDate(start_date.getDate() + 1);
+                start_date.setDate(start_date.getDate()
+                  );
             };
 
             // Step 2: Create an array of special dates
@@ -115,7 +116,7 @@
 
               selectedSpecialDate.map(function (date) {
                   total += date.price
-                  $('#special_list').append('<li class="text-right">('+ date.day + '): $' + date.price +'</li>')
+                  $('#special_list').append('<li class="text-right">('+ date.day + '): ' + date.price + " บ." + '</li>')
               });
             } else {
               $('#special_details').hide();

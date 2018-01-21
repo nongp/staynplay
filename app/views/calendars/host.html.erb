@@ -3,7 +3,7 @@
     <%= search_form_for @search, class: 'form-group', remote: true, url: host_calendar_path do |f| %>
       <div class="col-md-6 select">
         <div class="form-group">
-          <label>Your Listings</label>
+          <label>ที่พักของคุณ</label>
           <%= f.select :room_id, options_for_select(@rooms.collect {|u| [u.listing_name, u.id]}, params[:room_id]), {}, {
             onchange: "$(this.form).submit()",
             class: "form-control"
@@ -50,13 +50,7 @@
     defaultDate: $('#start-date').val(),
     events: showReservations(reservations),
     eventRender: function(event, element, view) {
-        return $(`
-          <a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end">
-            <div class="fc-content ${event.status}">
-              <span class="fc-title"><img class="img-circle avatar-small" src="${event.avatar}"> ${event.name}</span>
-            </div>
-          </a>
-          `);
+        return $(`<a class="fc-day-grid-event fc-h-event fc-event fc-start fc-end"><div class="fc-content ${event.status}"><span class="fc-title"><img class="img-circle avatar-small" src="${event.avatar}"> ${event.name}</span></div></a>`);
           },
 
       dayRender: function(date, cell) {

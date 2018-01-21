@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.3'
-
+gem 'sqlite3', '~> 1.3.13'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -18,7 +18,6 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'sqlite3'
 end
 
 group :development do
@@ -52,14 +51,8 @@ gem 'fullcalendar-rails', '~> 3.4.0'
 gem 'momentjs-rails', '~> 2.17.1'
 
 gem 'omise'
+gem 'rails-assets-card', source: 'https://rails-assets.org'
 
 gem 'chartkick', '~> 2.2.4'
 
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
- end
-
-
-
-
+gem 'activeadmin'
