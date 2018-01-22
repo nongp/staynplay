@@ -7,28 +7,11 @@ end
 
 gem 'rails', '~> 5.0.3'
 
-	group :development do
-	  gem 'sqlite3', '~> 1.3.13'
-	  gem 'web-console', '>= 3.3.0'
-	  gem 'byebug', platform: :mri 
-	  
-	end
-
-	group :test do
-		gem 'sqlite3', '~> 1.3.13'
-	end
-
-   	group :production do
-		gem 'pg', '0.18.1'
-		gem 'rails_12factor'
-		gem 'redis'
-   end
-
+gem 'redis'
  
 gem 'listen', '~> 3.0.5' 
 gem 'spring'
 gem 'spring-watcher-listen', '~> 2.0.0'
-
 
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -63,10 +46,17 @@ gem 'fullcalendar-rails', '~> 3.4.0'
 gem 'momentjs-rails', '~> 2.17.1'
 
 gem 'omise'
-gem 'rails-assets-card', source: 'https://rails-assets.org'
 
 gem 'chartkick', '~> 2.2.4'
 
 gem 'activeadmin'
 
+	group :development do
+	  gem 'sqlite3'
+	  gem 'web-console', '>= 3.3.0'
+	  gem 'byebug', platform: :mri 
+	end
 
+	group :production do
+		gem 'pg'
+	end
