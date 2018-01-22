@@ -25,7 +25,7 @@
 
               <div class="col-md-4 select">
                 <div class="form-group">
-                  <label>ประเภทห้อง</label>
+                  <label>ประเภทห้องของที่พัก</label>
                   <%= f.select :room_type, [["บ้าน/อพาร์ทเมนท์ทั้งหลัง", "Entire"], ["ห้องส่วนตัว", "Private"], ["ห้องแบ่งเช่า", "Shared"]],
                                 id: "room_type", prompt: "กรุณาเลือก...", class: "form-control" %>
                 </div>
@@ -33,7 +33,7 @@
 
               <div class="col-md-4 select">
                 <div class="form-group">
-                  <label>ประเภทการรับจอง</label>
+                  <label>ลักษณะการรับจอง</label>
                   <%= f.select :instant, Room.instants.map {|key,value| [key.humanize, key]}, selected: 'Instant', prompt: "กรุณาเลือก...", class: "form-control" %>
                 </div>
               </div>
