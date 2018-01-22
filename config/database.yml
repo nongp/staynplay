@@ -26,7 +26,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: staynplay
   pool: 5
-  name: petepjunior
-  password: alphaone
+  
+  DATABASE_URL="postgres://bxnaocrzhltzxm:12ecb80d08b197715c2fa19d7038a202137d8d28408355e4e243e642c80c5b4c@ec2-54-83-59-144.compute-1.amazonaws.com:5432/djhblj079s1v4
+"
