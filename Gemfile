@@ -9,11 +9,7 @@ gem 'rails', '~> 5.0.3'
 
 	group :development do
 	  gem 'sqlite3', '~> 1.3.13'
-	  gem 'web-console', '>= 3.3.0' 
-	  gem 'listen', '~> 3.0.5' 
-	  gem 'spring'
-	  gem 'spring-watcher-listen', '~> 2.0.0'
-	  gem 'byebug', platform: :mri 
+	  
 	end
 
 	group :test do
@@ -23,8 +19,14 @@ gem 'rails', '~> 5.0.3'
    	group :production do
 		gem 'pg', '0.18.1'
 		gem 'rails_12factor'
+		gem 'redis'
    end
 
+gem 'web-console', '>= 3.3.0' 
+gem 'listen', '~> 3.0.5' 
+gem 'spring'
+gem 'spring-watcher-listen', '~> 2.0.0'
+gem 'byebug', platform: :mri 
 
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
